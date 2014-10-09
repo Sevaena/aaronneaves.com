@@ -1,28 +1,74 @@
-body {
-    background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #333;
+// Typography
+
+@mixin declare-font-face($font-family, $font-filename, $font-weight : normal, $font-style :normal, $font-stretch : normal) {
+  @font-face {
+    font-family: '#{$font-family}';
+    src: url('/fonts/#{$font-filename}.eot');
+    src: url('/fonts/#{$font-filename}.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/#{$font-filename}.woff') format('woff'),
+         url('/fonts/#{$font-filename}.ttf') format('truetype'),
+         url('/fonts/#{$font-filename}.svg##{$font-family}') format('svg');
+    font-weight: $font-weight;
+    font-style: $font-style;
+    font-stretch: $font-stretch;
+  }
 }
 
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
-    h1 {
-        font-size: 60px;
-        line-height: 1;
-        letter-spacing: -1px;
-    }
+@include declare-font-face('Frutiger Light', 'FrutigerLTStd-Light', 200);
+@include declare-font-face('Frutiger', 'FrutigerLTStd-Roman');
+@include declare-font-face('Scala', 'Scala');
+
+
+// Page styles
+
+body {
+    background: #FAFCEF;
+    font-family: "Frutiger Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #282828;
+    margin: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 50px auto;
 }
 
 .browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+  background: #B2002D;
+  color: #FFFFFF;
+  padding: 1em;
+  text-align: center;
+  a {
+    color: #FFFFFF;
+  }
 }
+
+h1, h2, p {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  line-height: 1.5;
+  margin: 0;
+}
+
+h1 {
+  font-family: 'Scala';
+  font-size: 48px;
+  line-height: 72px;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-family: 'Frutiger';
+  text-transform: uppercase;
+  font-size: 14px;
+  line-height: 21px;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+
