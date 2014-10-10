@@ -18,6 +18,35 @@
 @include declare-font-face('Frutiger', 'FrutigerLTStd-Roman');
 @include declare-font-face('Scala', 'Scala');
 
+// Mixins for CSS3 animations
+
+@mixin animation-name($name) {
+  -o-animation-name: $name;
+  -moz-animation-name: $name;
+  -webkit-animation-name: $name;
+  animation-name: $name;
+}
+
+@mixin animation-delay($delay) {
+  -o-animation-delay: $delay;
+  -moz-animation-delay: $delay;
+  -webkit-animation-delay: $delay;
+  animation-delay: $delay;
+}
+
+@mixin animation-duration($duration) {
+  -o-animation-duration: $duration;
+  -moz-animation-duration: $duration;
+  -webkit-animation-duration: $duration;
+  animation-duration: $duration;
+}
+
+@mixin animation-fill-mode($fill-mode) {
+  -o-animation-fill-mode: $fill-mode;
+  -moz-animation-fill-mode: $fill-mode;
+  -webkit-animation-fill-mode: $fill-mode;
+  animation-fill-mode: $fill-mode;
+}
 
 // Page styles
 
@@ -49,6 +78,20 @@ h1, h2, p {
   font-weight: 400;
   line-height: 1.5;
   margin: 0;
+}
+
+header {
+  @include animation-name(fadeIn);
+  @include animation-delay(1s);
+  @include animation-duration(.75s);
+  @include animation-fill-mode(both);
+}
+
+article {
+  @include animation-name('fadeIn');
+  @include animation-duration(.75s);
+  @include animation-delay(1.5s);
+  @include animation-fill-mode(both);
 }
 
 h1 {
