@@ -18,7 +18,7 @@
 @include declare-font-face('Frutiger', 'FrutigerLTStd-Roman');
 @include declare-font-face('Scala', 'Scala');
 
-// Mixins for CSS3 animations
+// Animations
 
 @mixin animation-name($name) {
   -o-animation-name: $name;
@@ -48,7 +48,47 @@
   animation-fill-mode: $fill-mode;
 }
 
-// Page styles
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+
+  100% {
+    Opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+    -ms-transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+// Global
+
+$selection: yellow;
+
+::selection {
+  background: $selection;
+}
+
+::-moz-selection {
+  background: $selection;
+}
 
 body {
     background: #FAFCEF;
@@ -56,6 +96,8 @@ body {
     color: #282828;
     margin: 0;
 }
+
+// Page styles
 
 .container {
   max-width: 1000px;
@@ -81,14 +123,14 @@ h1, h2, p {
 }
 
 header {
-  @include animation-name(fadeIn);
+  @include animation-name(fadeInDown);
   @include animation-delay(1s);
   @include animation-duration(.75s);
   @include animation-fill-mode(both);
 }
 
 article {
-  @include animation-name('fadeIn');
+  @include animation-name(fadeIn);
   @include animation-duration(.75s);
   @include animation-delay(1.5s);
   @include animation-fill-mode(both);
