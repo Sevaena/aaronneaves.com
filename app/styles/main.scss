@@ -13,8 +13,8 @@ $bp-3: 320px;
 
 @include declare-font-face('Frutiger Light', 'FrutigerLTStd-Light', 200);
 @include declare-font-face('Frutiger', 'FrutigerLTStd-Roman');
-@include declare-font-face('Scala', 'Scala');
 
+// Border boxes all day every day
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -177,17 +177,25 @@ a, a:visited {
   -webkit-animation-delay: 1s;
   animation-delay: 1s;
 }
-.contact {
+.delay150ms {
   -webkit-animation-delay: 1.5s;
   animation-delay: 1.5s;
 }
 
 .browsehappy {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  opacity: 0.8;
+  height: 2.618rem;
+  line-height: 2.818rem;
+  margin: 0;
   background: #B2002D;
   color: #FFFFFF;
-  padding: 1em;
   text-align: center;
-  a {
+  &:hover, &:visited {
     color: #FFFFFF;
   }
 }
