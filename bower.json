@@ -1,9 +1,7 @@
 {
-  "name": "aaronneaves",
+  "name": "tmp",
   "private": true,
   "dependencies": {
-    "modernizr": "~2.6.2",
-    "jquery": "~1.11.0"
-  },
-  "devDependencies": {}
+    "jquery": "~2.1.1"
+  }
 }
