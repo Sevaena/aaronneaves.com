@@ -1,6 +1,8 @@
 $font-family-body: "Frutiger Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-family-heading: $font-family-body; //Scala, Garamond;
-$bp-1: 1040px;
+$font-family-heading: "Frutiger", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-color-body: #282828;
+$background-color: #FAFCEF;
+$bp-1: 1200px;
 $bp-2: 640px;
 $bp-3: 320px;
 
@@ -20,8 +22,8 @@ body {
   font-family: $font-family-body;
   font-size: $base-font-size;
   line-height: $base-line-height;
-  background: #FAFCEF;
-  color: #282828;
+  background: $background-color;
+  color: $font-color-body;
   margin: 0;
 }
 
@@ -31,8 +33,11 @@ h1, h2, h3, h4, p {
   font-weight: normal;
 }
 
-h1, .h1 {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   font-family: $font-family-heading;
+}
+
+h1, .h1 {
   font-size: $h1-font-size;
   line-height: $h1-line-height;
   margin-top: 0;
@@ -58,7 +63,6 @@ h4, .h4 {
   line-height: $h4-line-height;
   margin-top: $h4-margin-top;
   margin-bottom: $h4-margin-bottom;
-  text-transform: uppercase;
 }
 
 p, ul, ol, pre, table, blockquote {
@@ -66,18 +70,28 @@ p, ul, ol, pre, table, blockquote {
   margin-bottom: $base-line-height;
 }
 
-// padding
-.bio, .publications {
-  padding: 0 2.618em;
+a, a:visited {
+  color: $font-color-body;
+  text-decoration: none;
+
+  &:hover {
+    color: black;
+  }
+}
+
+.bio, .publications, .properties {
+  padding: 0 2.618rem;
+  margin: 0 auto;
+  max-width: $bp-2;
 
   @media (min-width: $bp-1) {
-    padding:  0 6.854em;
+    padding: 0 6.854rem;
+    margin: 0;
   }
 }
 
 .bio {
   width: 100%;
-  max-width: $bp-2;
   h2 {
     @include animation-name(fadeInDown);
     @include animation-delay(1s);
@@ -92,14 +106,6 @@ p, ul, ol, pre, table, blockquote {
     @include animation-fill-mode(both);
   }
 
-  @media (min-width: $bp-2) {
-    h2 {
-      font-size: $h1-font-size;
-      line-height: $h1-line-height;
-      margin-bottom: $h1-margin-bottom;
-    }
-  }
-
   @media (min-width: $bp-1) {
     width: 50%;
     max-width: none;
@@ -107,9 +113,9 @@ p, ul, ol, pre, table, blockquote {
 }
 .photo {
   @include animation-name(fadeIn);
-    @include animation-duration(.75s);
-    @include animation-delay(1.5s);
-    @include animation-fill-mode(both);
+  @include animation-duration(.75s);
+  @include animation-delay(1.5s);
+  @include animation-fill-mode(both);
 
   width: 100%;
   background-image: url('../images/aaron.jpg');
@@ -117,6 +123,7 @@ p, ul, ol, pre, table, blockquote {
   background-position: center;
   position: static;
   min-height: 320px;
+  margin: 2.618rem 0;
 
   @media (min-width: $bp-2) {
     min-height: 600px;
@@ -130,6 +137,34 @@ p, ul, ol, pre, table, blockquote {
     bottom: 0;
     left: auto;
     height: auto;
+    margin: 0;
+  }
+}
+
+.publications {
+  .publication {
+    h4 {
+      margin-bottom: 0.5rem;
+    }
+    p {
+      margin-top: 0;
+    }
+  }
+}
+
+.properties {
+  margin-bottom: $h2-margin-top;
+
+  ul {
+    padding: 0;
+    margin: 0;
+
+    li {
+      list-style-type: none;
+      font-family: $font-family-heading;
+      font-size: $h4-font-size;
+      margin-bottom: 0.5rem;
+    }
   }
 }
 
@@ -141,9 +176,5 @@ p, ul, ol, pre, table, blockquote {
   a {
     color: #FFFFFF;
   }
-}
-
-.bio {
-  
 }
 
