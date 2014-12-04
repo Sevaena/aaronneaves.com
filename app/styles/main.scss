@@ -1,3 +1,9 @@
+$font-family-body: "Frutiger Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-heading: $font-family-body; //Scala, Garamond;
+$bp-1: 1040px;
+$bp-2: 640px;
+$bp-3: 320px;
+
 @import 'normalize';
 @import 'typographic_variables';
 @import 'mixins';
@@ -6,8 +12,9 @@
 @include declare-font-face('Frutiger', 'FrutigerLTStd-Roman');
 @include declare-font-face('Scala', 'Scala');
 
-$font-family-heading: Scala, Garamond;
-$font-family-body: "Frutiger Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
 body {
   font-family: $font-family-body;
@@ -24,29 +31,29 @@ h1, h2, h3, h4, p {
   font-weight: normal;
 }
 
-h1 {
+h1, .h1 {
   font-family: $font-family-heading;
   font-size: $h1-font-size;
   line-height: $h1-line-height;
-  margin-top: $h1-margin-top;
+  margin-top: 0;
   margin-bottom: $h1-margin-bottom;
 }
 
-h2 {
+h2, .h2 {
   font-size: $h2-font-size;
   line-height: $h2-line-height;
   margin-top: $h2-margin-top;
   margin-bottom: $h2-margin-bottom;
 }
 
-h3 {
+h3, .h3 {
   font-size: $h3-font-size;
   line-height: $h3-line-height;
   margin-top: $h3-margin-top;
   margin-bottom: $h3-margin-bottom;
 }
 
-h4 {
+h4, .h4 {
   font-size: $h4-font-size;
   line-height: $h4-line-height;
   margin-top: $h4-margin-top;
@@ -59,9 +66,71 @@ p, ul, ol, pre, table, blockquote {
   margin-bottom: $base-line-height;
 }
 
-.container {
-  max-width: 500px;
-  margin: 50px auto;
+// padding
+.bio, .publications {
+  padding: 0 2.618em;
+
+  @media (min-width: $bp-1) {
+    padding:  0 6.854em;
+  }
+}
+
+.bio {
+  width: 100%;
+  max-width: $bp-2;
+  h2 {
+    @include animation-name(fadeInDown);
+    @include animation-delay(1s);
+    @include animation-duration(.75s);
+    @include animation-fill-mode(both);
+  }
+
+  article {
+    @include animation-name(fadeIn);
+    @include animation-duration(.75s);
+    @include animation-delay(1.5s);
+    @include animation-fill-mode(both);
+  }
+
+  @media (min-width: $bp-2) {
+    h2 {
+      font-size: $h1-font-size;
+      line-height: $h1-line-height;
+      margin-bottom: $h1-margin-bottom;
+    }
+  }
+
+  @media (min-width: $bp-1) {
+    width: 50%;
+    max-width: none;
+  }
+}
+.photo {
+  @include animation-name(fadeIn);
+    @include animation-duration(.75s);
+    @include animation-delay(1.5s);
+    @include animation-fill-mode(both);
+
+  width: 100%;
+  background-image: url('../images/aaron.jpg');
+  background-size: cover;
+  background-position: center;
+  position: static;
+  min-height: 320px;
+
+  @media (min-width: $bp-2) {
+    min-height: 600px;
+  }
+
+  @media (min-width: $bp-1) {
+    width: 50%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    height: auto;
+  }
 }
 
 .browsehappy {
@@ -74,17 +143,7 @@ p, ul, ol, pre, table, blockquote {
   }
 }
 
-header {
-  @include animation-name(fadeInDown);
-  @include animation-delay(1s);
-  @include animation-duration(.75s);
-  @include animation-fill-mode(both);
-}
-
-article {
-  @include animation-name(fadeIn);
-  @include animation-duration(.75s);
-  @include animation-delay(1.5s);
-  @include animation-fill-mode(both);
+.bio {
+  
 }
 
