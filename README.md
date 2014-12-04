@@ -8,3 +8,5 @@ To start a web server using livereload, simply run `gulp watch`.
 
 Run `gulp` to build to the dist directory.
 
+Run `gulp deploy` to deploy to GitHub (this will deploy from the dist directory
+to the gh-pages branch). You need to `gulp` (to build first), before you deploy.
