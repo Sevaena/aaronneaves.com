@@ -61,6 +61,11 @@ gulp.task('extras', function () {
   }).pipe(gulp.dest('dist'));
 });
 
+gulp.task('cname', function() {
+  return gulp.src('app/CNAME')
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('clean', require('del').bind(null, ['.tmp', 'dist']));
 
 gulp.task('connect', ['styles'], function () {
@@ -114,7 +119,7 @@ gulp.task('watch', ['connect'], function () {
   gulp.watch('bower.json', ['wiredep']);
 });
 
-gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras'], function () {
+gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras', 'cname'], function () {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
